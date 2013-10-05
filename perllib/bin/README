@@ -1,84 +1,16 @@
 ================================================================
 This is a grab bag of various Perl scripts, mostly numerical,
-and all rather old at this point.  Among the non-numerical
-ones are some Unix-style replacement scripts, from my NT days.
+and all rather old at this point.
+
+See also http://github.com/johnkerl/scripts
+See also http://github.com/johnkerl/scripts-misc
+
 John Kerl
 kerl.john.r@gmail.com
 2012-07-28
 ================================================================
 
 Descriptions:
-
-Makefile generator ("yet another make-make"):
-* yamm [scripts/fundam/yamm],
-* sample program 1 for yamm [yamm_ex1],
-* sample program 2 for yamm [yamm_ex2].
-
-Substitute for makeindex which correctly handles alphabetization of text including \mathbb etc. in LaTeX files:
-* kmkidx [kmkidx].
-
-Tools for formatting and manipulating tabular data in plain ASCII:
-* colprint [colprint],
-* mwxprint [mxwprint],
-* parside [parside],
-* interleave [interleave],
-* creach [creach],
-* twoper [twoper],
-* xpose [xpose],
-* cpick [cpick],
-* dashes [dashes],
-* caytex [caytex],
-* mattex [mattex].
-
-Tools for large-scale search and replace:
-* krepl [krepl],
-* mrepl [mrepl].
-* Variants of familiar tools:
-* bffind /bffind],
-* mgrep [mgrep].
-
-Windows workalikes for familiar Unix tools:
-* kbc [kbc],
-* grep.pl [grep.pl],
-* head.pl [head.pl],
-* tail.pl [tail.pl],
-* uniq.pl [uniq.pl],
-* wc.pl [wc.pl],
-* whereis.pl [whereis.pl],
-* My_win_glob.pm [My_win_glob.pm],
-* w.pl [w.pl],
-* notes about Perl and Windows file associations [perl-on-windows-notes.txt],
-* toc.pl [toc.pl]  which works around the Windows association/redirection bug.
-
-Unix workalikes for familiar Windows tools:
-* grepr [grepr],
-* lsr [lsr],
-* rmr [rmr].
-
-fixrlinks [fixrlinks.pl] :
-When I rsync -rtlz between hosts on which the spelling of my home directory
-differs (e.g. /u5/kerl on one and /home/kerl on the other), rsync doesn't
-change the symlink referents.  This script can be run after an rsync to fix
-that.
-
-finddang [finddang.pl] : Reports on dangling symlinks.
-
-Miscellaneous text manipulation:
-* upcase [upcase],
-* downcase [downcase],
-* scrunch [scrunch],
-* printtwice [printtwice],
-* printtwicej [printtwicej],
-* printthricej [printthricej],
-* chop [chop],
-* dspc [dspc],
-* dspcw [dspcw],
-* linesort [linesort],
-* detab [detab],
-* retab [retab],
-* fdiff [fdiff],
-* nocolon [nocolon],
-* wordfreq [wordfreq].
 
 Numerical calculus:
 * series estimation [numseries],

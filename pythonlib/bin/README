@@ -7,11 +7,6 @@ kerl.john.r@gmail.com
 
 Descriptions:
 
-pgr, a plotter which sends tabular file data to pylab:
-* documentation [doc/pgr.html],
-* main script [pgr],
-* required I/O module [tabutil_m.py].
-
 Matrix arithmetic (using the matrix module sackmat_m.py):
 * Matrix multiply [pymatmul],
 * matrix add [pymatadd],
