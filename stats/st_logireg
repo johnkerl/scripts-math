@@ -1,0 +1,58 @@
+#!/usr/bin/python -Wall
+
+# ================================================================
+# John Kerl
+# kerl.john.r@gmail.com
+# 2007-07-02
+# ================================================================
+
+from __future__ import division # 1/2 = 0.5, not 0.
+import sys
+import sackmat_m
+import stats_m
+import math
+
+# ----------------------------------------------------------------
+def usage():
+	print >> sys.stderr, "Usage: %s {reg|fit} {x file name} {y file name}" % (sys.argv[0])
+	print >> sys.stderr, "Or:    %s {reg|fit} {x-y-pair file name}." % (sys.argv[0])
+	print >> sys.stderr, "Use \"-\" as file name for stdin."
+	print >> sys.stderr, "Use reg to only print fit parameters. Use fit to apply them to the input."
+	sys.exit(1)
+
+# ----------------------------------------------------------------
+argc = len(sys.argv)
+if ((argc != 3) and (argc != 4)):
+	usage()
+
+do_tabulate = False
+if (argc == 4):
+	file_name_1 = sys.argv[2]
+	file_name_2 = sys.argv[3]
+
+	xs = sackmat_m.read_column_vector(float, file_name_1)
+	ys = sackmat_m.read_column_vector(float, file_name_2)
+elif (argc == 3):
+	file_name = sys.argv[2]
+	xys = sackmat_m.read_matrix(float, file_name)
+	xs = xys.get_column(0)
+	ys = xys.get_column(1)
+if sys.argv[1] == 'reg':
+	do_tabulate = False
+elif sys.argv[1] == 'fit':
+	do_tabulate = True
+else:
+	usage()
+
+[m, b] = stats_m.logistic_regression(xs, ys)
+if do_tabulate:
+	N = len(xs)
+	for i in xrange(0, N):
+		x = xs[i]
+		y = ys[i]
+		p = 1.0 / (1.0 + math.exp(-m*x-b))
+		print "%f %f %f" % (x, y, p)
+else:
+	print m
+	print b
+
