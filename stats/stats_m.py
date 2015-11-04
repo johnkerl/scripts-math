@@ -136,6 +136,53 @@ def find_sampvar(xs):
 def find_var_of_sample_mean(xs):
 	return find_sampvar(xs) / len(xs)
 
+# ----------------------------------------------------------------
+# Sample skewness
+
+#    (1/n)   sum{(x-mu)**3}
+# -------------------------------
+# [(1/(n-1)) sum{(x-mu)**2}]**1.5
+def find_sampskewnessaux(xs, mean):
+	sum3 = 0.0
+	sum2 = 0.0
+	n = len(xs)
+	for x in xs:
+		xm = x - mean
+		xm2 = xm * xm
+		xm3 = xm * xm2
+		sum3 += xm3
+		sum2 += xm2
+	numerator = sum3 / n
+	denominator = (sum2 / (n-1)) ** 1.5
+	return numerator / denominator
+
+def find_sampskewness(xs):
+	return find_sampskewnessaux(xs, find_mean(xs))
+
+# ----------------------------------------------------------------
+# Sample kurtosis
+
+#  (1/n) sum{(x-mu)**4}
+#  ----------------------- - 3
+# [(1/n) sum{(x-mu)**2}]**2
+def find_sampkurtosisaux(xs, mean):
+	sum4 = 0.0
+	sum2 = 0.0
+	n = len(xs)
+	for x in xs:
+		xm = x - mean
+		xm2 = xm * xm
+		xm4 = xm2 * xm2
+		sum4 += xm4
+		sum2 += xm2
+	numerator = sum4 / n
+	denominator = (sum2 / n) ** 2
+	return numerator / denominator - 3
+
+def find_sampkurtosis(xs):
+	return find_sampkurtosisaux(xs, find_mean(xs))
+
+# ----------------------------------------------------------------
 # U = 1 - <X^4> / (3 <X^2>^2)
 # where X is taken to have zero mean
 def find_fourth_order_cumulant(farray):
